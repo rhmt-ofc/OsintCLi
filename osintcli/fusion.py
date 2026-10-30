@@ -186,8 +186,8 @@ def relationship(parent,child,source,depth,kind="PUBLIC_LINK"):
 
 
 def phone(ctx):
-    yield item("phone_format",{"international":ctx.value,"digits":ctx.value[1:]},"local:phone",status="UNVERIFIED",
-               reason="Normalisasi format internasional saja; bukan pemeriksaan nomor aktif, WhatsApp, nama, atau lokasi.")
+    from .phone import collect_phone_intel
+    yield from collect_phone_intel(ctx)
 
 
 def fusion(ctx):
